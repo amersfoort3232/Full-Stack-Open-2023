@@ -1,0 +1,40 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+    browser ->> server :POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    activate server
+    server ->> browser: URL redirect
+    deactivate server
+
+    //browser now would reload the page and get different elements
+
+    browser ->> server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    activate server
+    server ->> browser: HTML document
+    deactivate server
+
+    browser ->> server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate server
+    server ->> browser: CSS file
+    deactivate server
+
+    browser ->> server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    activate server
+    server ->> browser: Javascript file
+    deactivate server
+
+    //browser now start executing js file and fetch JSON from server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate server
+    server-->>browser: [{"content":"empty","date":"2023-05-21T20:31:56.132Z"}...]
+    deactivate server
+    
+    
+
+
+
+
+
+

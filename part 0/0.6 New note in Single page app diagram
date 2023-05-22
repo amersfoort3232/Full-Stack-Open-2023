@@ -1,0 +1,10 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+    browser ->> server :POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa //send request using javascript
+    activate server
+    server ->> browser: JSON/XML //the server would response through JSON/XML code
+    deactivate server
+
+    //respond sent from the server would be handle by Javascript code.
